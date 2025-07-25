@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/logo.webp';
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 
 export default function NavBar() {
