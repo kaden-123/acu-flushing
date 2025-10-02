@@ -49,7 +49,7 @@ export default function Contact() {
                     href="mailto:info@acuflushing.com" 
                     className="hover:text-cyan-600 text-gray-900"
                   >
-                    info@acuflushing.com
+                    acupuncture41ave@gmail.com
                   </a>
                 </p>
               </address>

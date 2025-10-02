@@ -44,38 +44,65 @@ export default function NavBar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Load Zocdoc script once
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.async = true;
+    script.src = "https://offsiteschedule.zocdoc.com/plugin/embed";
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <>
       <Helmet>
         <title>AcuFlushing | Natural Healing</title>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <style>{`
+          @keyframes pulse-slow {
+            0%, 100% {
+              transform: scale(1);
+              box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.6);
+            }
+            50% {
+              transform: scale(1.05);
+              box-shadow: 0 0 0 10px rgba(6, 182, 212, 0);
+            }
+          }
+          .animate-pulse-slow {
+            animation: pulse-slow 2s infinite;
+          }
+        `}</style>
       </Helmet>
 
       {/* Contact Info Bar */}
       <div className="bg-cyan-50 py-3 px-4 text-center text-sm border-b border-cyan-100">
         <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6">
           <a 
-          href="https://www.google.com/maps/search/?api=1&query=143-26+41st+Ave,+Flushing,+NY+11355" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-gray-800 hover:text-cyan-600 transition-colors"
+            href="https://www.google.com/maps/search/?api=1&query=143-26+41st+Ave,+Flushing,+NY+11355" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-gray-800 hover:text-cyan-600 transition-colors"
           >
-          <FiMapPin className="text-cyan-600" />
-          <span>143-26 41st Ave, Flushing NY 11355</span>
+            <FiMapPin className="text-cyan-600" />
+            <span>143-26 41st Ave, Flushing NY 11355</span>
           </a>
           
           <div className="hidden md:block text-gray-300">|</div>
         
           <a href="mailto:info@acuflushing.com" className="flex items-center gap-2 text-gray-800 hover:text-cyan-600 transition-colors">
-          <FiMail className="text-cyan-600" />
-          <span>info@acuflushing.com</span>
+            <FiMail className="text-cyan-600" />
+            <span>info@acuflushing.com</span>
           </a>
         
           <div className="hidden md:block text-gray-300">|</div>
         
           <a href="tel:+17188889512" className="flex items-center gap-2 text-gray-800 hover:text-cyan-600 transition-colors">
-          <FiPhone className="text-cyan-600" />
-          <span>+1 718-888-9512</span>
+            <FiPhone className="text-cyan-600" />
+            <span>+1 718-888-9512</span>
           </a>
         </div>
       </div>
@@ -90,13 +117,13 @@ export default function NavBar() {
             <img 
               src={logo} 
               alt="AcuFlushing Logo" 
-              className="h-32 w-auto"
+              className="h-24 w-auto md:h-28"
               loading="lazy"
             />
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-8 items-center">
             {navLinks.map((link) => (
               <div key={link.href} className="relative group">
                 <button
@@ -114,6 +141,17 @@ export default function NavBar() {
                 }`} />
               </div>
             ))}
+
+            {/* Pulsing Zocdoc Button */}
+            <a
+              href="https://www.zocdoc.com/practice/natural-life-acupuncture-pc-148498?lock=true&isNewPatient=false&referrerType=widget"
+              className="zd-plugin bg-cyan-500 text-white px-4 py-2 rounded-lg shadow hover:bg-cyan-600 transition-colors font-medium animate-pulse-slow"
+              data-type="book-button"
+              data-practice-id="148498"
+              title="Natural Life Acupuncture, PC"
+            >
+              Book Online
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -149,6 +187,17 @@ export default function NavBar() {
                 {link.name}
               </button>
             ))}
+
+            {/* Mobile Pulsing Zocdoc Button */}
+            <a
+              href="https://www.zocdoc.com/practice/natural-life-acupuncture-pc-148498?lock=true&isNewPatient=false&referrerType=widget"
+              className="zd-plugin block bg-cyan-500 text-white px-4 py-3 rounded-lg shadow hover:bg-cyan-600 transition-colors font-medium text-center animate-pulse-slow"
+              data-type="book-button"
+              data-practice-id="148498"
+              title="Natural Life Acupuncture, PC"
+            >
+              Book Online
+            </a>
           </div>
         )}
       </nav>
