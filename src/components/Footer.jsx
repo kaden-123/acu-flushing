@@ -23,7 +23,7 @@ export default function Footer() {
                 </p>
                 <p>
                   <a href="mailto:info@acuflushing.com" className="hover:text-cyan-400">
-                    info@acuflushing.com
+                    acupuncture41ave@gmail.com
                   </a>
                 </p>
               </address>
