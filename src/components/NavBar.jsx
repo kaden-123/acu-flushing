@@ -93,9 +93,9 @@ export default function NavBar() {
           
           <div className="hidden md:block text-gray-300">|</div>
         
-          <a href="mailto:info@acuflushing.com" className="flex items-center gap-2 text-gray-800 hover:text-cyan-600 transition-colors">
+          <a href="mailto:acupuncture41ave@gmail.com" className="flex items-center gap-2 text-gray-800 hover:text-cyan-600 transition-colors">
             <FiMail className="text-cyan-600" />
-            <span>info@acuflushing.com</span>
+            <span>acupuncture41ave@gmail.com</span>
           </a>
         
           <div className="hidden md:block text-gray-300">|</div>
